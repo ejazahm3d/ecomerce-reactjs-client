@@ -19,6 +19,14 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  link: {
+    color: "inherit",
+    textDecoration: "none",
+    "&:hover": {
+      color: "inherit",
+      textDecoration: "none"
+    }
   }
 }));
 
@@ -38,10 +46,14 @@ export default function ButtonAppBar() {
             <Menu />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Ecom
+            <Link className={classes.link} to="/">
+              Ecom Logo
+            </Link>
           </Typography>
           <Button color="inherit" variant="outlined">
-            <Link to="/login">Login</Link>
+            <Link className={classes.link} to="/login">
+              Login
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>
