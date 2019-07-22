@@ -8,6 +8,7 @@ import {
   makeStyles
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +40,9 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Ecom
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" variant="outlined">
+            <Link to="/login">Login</Link>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
