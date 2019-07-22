@@ -1,12 +1,21 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import Navbar from "./navbar";
+import { Route, Switch } from "react-router-dom";
+import Navbar from "./layout/navbar";
+import Register from "./auth/register";
+import SignIn from "./auth/login";
+import HomePage from "../pages/homepage/HomePage";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Typography variant="h1">Hello World</Typography>;
+      <div>
+        <Switch>
+          <Route path="/" exact component={HomePage} />
+          <Route path="/register" exact component={Register} />
+          <Route path="/login" exact component={SignIn} />
+        </Switch>
+      </div>
     </div>
   );
 }
