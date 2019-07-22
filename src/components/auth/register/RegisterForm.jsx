@@ -12,13 +12,13 @@ const RegisterForm = ({
   <form onSubmit={handleSubmit}>
     <TextField
       fullWidth
-      label="Username"
-      name="username"
-      value={values.username}
+      label="Name"
+      name="name"
+      value={values.name}
       onChange={handleChange}
       onBlur={handleBlur}
-      helperText={errors.username && touched.username && errors.username}
-      error={errors.username && touched.username}
+      helperText={errors.name && touched.name && errors.name}
+      error={errors.name && touched.name}
     />
 
     <TextField

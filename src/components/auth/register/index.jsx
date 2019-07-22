@@ -7,7 +7,7 @@ import { Typography, Container, Paper } from "@material-ui/core";
 import RegisterForm from "./RegisterForm";
 
 const Register = () => {
-  const values = { username: "", email: "", confirmPassword: "", password: "" };
+  const values = { name: "", email: "", confirmPassword: "", password: "" };
 
   return (
     <Container maxWidth="xs">
