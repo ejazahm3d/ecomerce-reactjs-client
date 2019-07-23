@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import { validationSchema } from "./validationScheme";
 import { Typography, Container, Paper } from "@material-ui/core";
@@ -8,9 +8,11 @@ import RegisterForm from "./RegisterForm";
 import PropTypes from "prop-types";
 import { createUser } from "../../../store/actions/auth";
 
-const Register = ({ createUser }) => {
+const Register = ({ createUser, isAuthenticated }) => {
   const values = { name: "", email: "", confirmPassword: "", password: "" };
-
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <Container maxWidth="xs">
       <Paper style={{ padding: "2rem", marginTop: "2rem" }}>
@@ -49,10 +51,15 @@ const Register = ({ createUser }) => {
   );
 };
 Register.propTypes = {
-  createUser: PropTypes.func.isRequired
+  createUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
 };
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { createUser }
 )(Register);
