@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import { validationSchema } from "./validationScheme";
 import { Typography, Container, Paper } from "@material-ui/core";
 import RegisterForm from "./RegisterForm";
+import PropTypes from "prop-types";
 import { createUser } from "../../../store/actions/auth";
 
 const Register = ({ createUser }) => {
@@ -28,7 +29,9 @@ const Register = ({ createUser }) => {
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
-          onSubmit={values => createUser(values)}
+          onSubmit={async values => {
+            await createUser(values);
+          }}
           render={props => <RegisterForm {...props} />}
         />
 
@@ -44,6 +47,9 @@ const Register = ({ createUser }) => {
       </Paper>
     </Container>
   );
+};
+Register.propTypes = {
+  createUser: PropTypes.func.isRequired
 };
 
 export default connect(

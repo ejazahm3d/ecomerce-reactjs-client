@@ -1,11 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Formik } from "formik";
 import { Typography, Container, Paper } from "@material-ui/core";
 import SignInForm from "./LoginForm";
 import { validationSchema } from "./validationScheme";
+import { login } from "../../../store/actions/auth";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const SignIn = () => {
+const SignIn = ({ login, isAuthenticated }) => {
+  if (isAuthenticated) {
+    return <Redirect to="/" />;
+  }
   return (
     <Container maxWidth="xs">
       <Paper style={{ padding: "2rem", marginTop: "2rem" }}>
@@ -23,7 +29,7 @@ const SignIn = () => {
 
         <Formik
           initialValues={{ email: "", password: "" }}
-          onSubmit={values => console.log(values)}
+          onSubmit={values => login(values)}
           validationSchema={validationSchema}
           render={props => <SignInForm {...props} />}
         />
@@ -42,4 +48,16 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+SignIn.propType = {
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  null,
+  { login }
+)(SignIn);

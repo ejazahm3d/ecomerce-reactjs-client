@@ -15,8 +15,10 @@
     "react-scripts": "3.0.1",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "0.0.75",
+    "uuid": "^3.3.2",
     "yup": "^0.27.0"
   },
   "scripts": {

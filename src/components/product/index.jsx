@@ -4,7 +4,6 @@ import {
   CardActionArea,
   CardMedia,
   Typography,
-  makeStyles,
   CardContent
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";

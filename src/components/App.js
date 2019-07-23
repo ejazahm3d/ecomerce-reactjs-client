@@ -4,11 +4,18 @@ import Navbar from "./layout/navbar";
 import Register from "./auth/register";
 import SignIn from "./auth/login";
 import HomePage from "../pages/homepage/HomePage";
+import setAuthToken from "../utils/setAuthToken";
+import Alert from "./layout/alert";
 
-function App() {
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => {
   return (
     <div>
       <Navbar />
+      <Alert />
       <div>
         <Switch>
           <Route path="/" exact component={HomePage} />
@@ -18,6 +25,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
