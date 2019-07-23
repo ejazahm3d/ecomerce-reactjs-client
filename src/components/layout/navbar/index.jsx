@@ -9,6 +9,9 @@ import {
 } from "@material-ui/core";
 import { Menu } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../../store/actions/auth";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function ButtonAppBar() {
+const ButtonAppBar = ({ isAuthenticated, logout }) => {
   const classes = useStyles();
 
   return (
@@ -50,13 +53,34 @@ export default function ButtonAppBar() {
               Ecom Logo
             </Link>
           </Typography>
-          <Button color="inherit" variant="outlined">
-            <Link className={classes.link} to="/login">
-              Login
-            </Link>
-          </Button>
+
+          {isAuthenticated ? (
+            <Button color="inherit" variant="outlined" onClick={logout}>
+              Logout
+            </Button>
+          ) : (
+            <Button color="inherit" variant="outlined">
+              <Link className={classes.link} to="/login">
+                Login
+              </Link>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+ButtonAppBar.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired
+};
+
+const mapStoreToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(
+  mapStoreToProps,
+  { logout }
+)(ButtonAppBar);

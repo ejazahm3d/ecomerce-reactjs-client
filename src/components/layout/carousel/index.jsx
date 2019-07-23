@@ -7,22 +7,23 @@ import ImageCarousel from "./ImageCarousel";
 const images = [
   {
     id: 1,
-    src: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+    src:
+      "https://www.mobilephonesdirect.co.uk/assets/img/resources/xiaomi-mi-8-pro-banner.jpg",
     alt: "Carousel"
   },
   {
     id: 2,
-    src: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+    src: "https://www.cubot.net/images/max2-banner.jpg",
     alt: "Carousel"
   },
   {
     id: 3,
-    src: "https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",
+    src: "https://xiaomi-mi.us/uploads/Slide/Mi_8_Lite_1540816720.jpg",
     alt: "Carousel"
   }
 ];
 
-export default class DemoCarousel extends Component {
+export default class HomePageCarousel extends Component {
   render() {
     return (
       <Carousel
@@ -32,6 +33,7 @@ export default class DemoCarousel extends Component {
         swipeable={true}
         stopOnHover={true}
         showStatus={false}
+        infiniteLoop={true}
       >
         {images.map(image => (
           <ImageCarousel key={image.id} image={image.src} alt={image.alt} />

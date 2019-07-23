@@ -11,8 +11,7 @@ import {
 import axios from "axios";
 import { setAlert } from "./alert";
 import setAuthToken from "../../components/App";
-
-const baseUrl = "http://localhost:5000";
+import { baseUrl } from "../../utils/baseUrl";
 
 // Load User
 

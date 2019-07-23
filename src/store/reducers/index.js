@@ -5,12 +5,13 @@ import storage from "redux-persist/lib/storage";
 import cart from "./cartReducer";
 import auth from "./authReducer";
 import alert from "./alertReducer";
+import product from "./productReducer";
 
 const persistConfig = {
   key: "root",
   storage,
   whitelist: ["auth"]
 };
-const rootReducer = combineReducers({ cart, auth, alert });
+const rootReducer = combineReducers({ cart, auth, alert, product });
 
 export default persistReducer(persistConfig, rootReducer);

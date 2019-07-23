@@ -7,27 +7,42 @@ import {
   CardContent
 } from "@material-ui/core";
 import { withRouter } from "react-router-dom";
-export default withRouter(({ history }) => {
+import PropTypes from "prop-types";
+
+const Product = ({ history, name, desc, src, alt, price }) => {
   return (
     <Card>
       <CardActionArea onClick={() => history.push("/product/id")}>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
-          height="140"
-          image="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
-          title="Contemplative Reptile"
+          alt={alt}
+          height="240"
+          image={src}
+          title={name}
         />
       </CardActionArea>
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          Lizard
+          {name}
         </Typography>
+        <Typography gutterBottom variant="h6" component="h2">
+          {price} USD
+        </Typography>
+
         <Typography variant="body2" color="textSecondary" component="p">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {desc}
         </Typography>
       </CardContent>
     </Card>
   );
-});
+};
+
+Product.propTypes = {
+  name: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  desc: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired
+};
+
+export default withRouter(Product);
