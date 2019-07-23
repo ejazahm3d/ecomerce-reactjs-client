@@ -5,8 +5,9 @@ import { Formik } from "formik";
 import { validationSchema } from "./validationScheme";
 import { Typography, Container, Paper } from "@material-ui/core";
 import RegisterForm from "./RegisterForm";
+import { createUser } from "../../../store/actions/auth";
 
-const Register = () => {
+const Register = ({ createUser }) => {
   const values = { name: "", email: "", confirmPassword: "", password: "" };
 
   return (
@@ -27,7 +28,7 @@ const Register = () => {
         <Formik
           initialValues={values}
           validationSchema={validationSchema}
-          onSubmit={values => console.log(values)}
+          onSubmit={values => createUser(values)}
           render={props => <RegisterForm {...props} />}
         />
 
@@ -45,4 +46,7 @@ const Register = () => {
   );
 };
 
-export default connect(null)(Register);
+export default connect(
+  null,
+  { createUser }
+)(Register);
