@@ -14,6 +14,8 @@ import { removeFromCart } from "../../store/actions/cart";
 const Cart = ({ cartItems, removeFromCart }) => {
   return (
     <Container maxWidth="md">
+      <Typography variant="h2">Cart</Typography>
+
       {cartItems.map(item => (
         <Card style={{ margin: "2rem auto" }} key={item.id}>
           <CardMedia
