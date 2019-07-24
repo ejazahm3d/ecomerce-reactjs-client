@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../../store/actions/auth";
+import NavCart from "./NavCart";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -53,6 +54,11 @@ const ButtonAppBar = ({ isAuthenticated, logout }) => {
               Ecom Logo
             </Link>
           </Typography>
+          <IconButton>
+            <Link className={classes.link} to="/cart">
+              <NavCart />
+            </Link>
+          </IconButton>
 
           {isAuthenticated ? (
             <Button color="inherit" variant="outlined" onClick={logout}>
