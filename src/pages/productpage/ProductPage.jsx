@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
@@ -11,6 +11,7 @@ import {
   CircularProgress
 } from "@material-ui/core";
 import { fetchProductById } from "../../store/actions/product";
+import { addToCart } from "../../store/actions/cart";
 
 const useStyles = makeStyles(theme => ({
   root: { marginTop: "2rem" },
@@ -19,7 +20,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const ProductPage = ({ fetchProductById, product, match, isLoading }) => {
+const ProductPage = ({
+  fetchProductById,
+  product,
+  match,
+  isLoading,
+  addToCart
+}) => {
   const classes = useStyles();
 
   useEffect(() => {
@@ -67,6 +74,7 @@ const ProductPage = ({ fetchProductById, product, match, isLoading }) => {
               fullWidth={true}
               color="primary"
               variant="contained"
+              onClick={() => addToCart(product)}
             >
               Add to Cart
             </Button>
@@ -79,7 +87,8 @@ const ProductPage = ({ fetchProductById, product, match, isLoading }) => {
 
 ProductPage.propTypes = {
   fetchProductById: PropTypes.func.isRequired,
-  match: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired,
+  addToCart: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -88,5 +97,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchProductById }
+  { fetchProductById, addToCart }
 )(ProductPage);

@@ -1,11 +1,11 @@
-const initialState = {
-  count: 1
-};
+import { ADD_TO_CART } from "../actions/types";
+
+const initialState = {};
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case "PLUS":
-      return { ...state, ...payload };
+    case ADD_TO_CART:
+      return { ...state, [payload.id]: payload };
 
     default:
       return state;
