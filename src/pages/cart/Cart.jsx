@@ -55,12 +55,9 @@ const Cart = ({ cartItems, removeFromCart }) => {
 Cart.propTypes = {
   cartItems: PropTypes.array.isRequired
 };
-const mapStateToProps = state => {
-  console.log(Object.values(state.cart));
-  return {
-    cartItems: Object.values(state.cart)
-  };
-};
+const mapStateToProps = state => ({
+  cartItems: Object.values(state.cart)
+});
 
 export default connect(
   mapStateToProps,
