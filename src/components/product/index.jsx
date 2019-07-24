@@ -9,10 +9,10 @@ import {
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const Product = ({ history, name, desc, src, alt, price }) => {
+const Product = ({ history, name, desc, src, alt, price, match, id }) => {
   return (
     <Card>
-      <CardActionArea onClick={() => history.push("/product/id")}>
+      <CardActionArea onClick={() => history.push(`/product/${id}`)}>
         <CardMedia
           component="img"
           alt={alt}
@@ -42,7 +42,8 @@ Product.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   desc: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired
+  price: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default withRouter(Product);

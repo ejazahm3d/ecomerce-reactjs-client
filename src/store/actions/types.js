@@ -10,3 +10,4 @@ export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const LOGOUT = "LOGOUT";
 
 export const FETCH_ALL_PRODUCTS = "FETCH_ALL_PRODUCTS";
+export const FETCH_PRODUCT_ID = "FETCH_PRODUCT_ID";

@@ -6,6 +6,7 @@ import SignIn from "./auth/login";
 import HomePage from "../pages/homepage/HomePage";
 import setAuthToken from "../utils/setAuthToken";
 import Alert from "./layout/alert";
+import ProductPage from "../pages/productpage/ProductPage";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" exact component={HomePage} />
           <Route path="/register" exact component={Register} />
           <Route path="/login" exact component={SignIn} />
+          <Route path="/product/:id" exact component={ProductPage} />
         </Switch>
       </div>
     </div>
